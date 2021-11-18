@@ -2,3 +2,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Artifacts */
+.tier-1 {
+  background-color: #cceaef;
+}
+
+.tier-2 {
+  background-color: #a4efeb;
+}
+
+.tier-3 {
+  background-color: #6be8e7;
+}
+
+.tier-4 {
+  background-color: #3585be;
+}
+
+/* Blank Chip */
+.blank-chip {
+  background-color: #cceaef;
+}
