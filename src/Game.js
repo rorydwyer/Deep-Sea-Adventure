@@ -1,15 +1,19 @@
 export const DeepSeaAdventure = {
-  setup: () => ({
-    artifacts: getArtifactChips(),
+  setup: (ctx) => ({
+    players: setupPlayers(ctx.numPlayers),
+    artifacts: setupArtifactChips(),
+    oxygen: 25,
   }),
 
   moves: {
-    swimDown: (G, ctx, id) => {
-      alert("swim down");
+    swimDown: (G, ctx) => {
+      if (G.players[ctx.currentPlayer].depth >= G.artifacts.length - 1) return;
+      G.players[ctx.currentPlayer].depth++;
     },
 
-    swimUp: (G, ctx, id) => {
-      alert("swim up");
+    swimUp: (G, ctx) => {
+      if (G.players[ctx.currentPlayer].depth <= -1) return;
+      G.players[ctx.currentPlayer].depth--;
     },
 
     rollDice: (G, ctx, id) => {
@@ -28,7 +32,21 @@ export const DeepSeaAdventure = {
   },
 };
 
-function getArtifactChips() {
+function setupPlayers(numPlayers) {
+  let players = [];
+  for (let i = 0; i < numPlayers; i++) {
+    players.push({
+      id: i + 1,
+      name: `Player ${i + 1}`,
+      depth: -1,
+      artifactsCarrying: [],
+      artifactsSaved: [],
+    });
+  }
+  return players;
+}
+
+function setupArtifactChips() {
   let tier1 = suffleArray([0, 0, 1, 1, 2, 2, 3, 3]);
   let tier2 = suffleArray([4, 4, 5, 5, 6, 6, 7, 7]);
   let tier3 = suffleArray([8, 8, 9, 9, 10, 10, 11, 11]);

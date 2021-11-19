@@ -3,6 +3,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Players */
+.player-1 {
+  background-color: #eb9fa1;
+}
+
+.player-2 {
+  background-color: #57d861;
+  margin-left: 12px;
+}
+
+.player-3 {
+  background-color: #d06be8;
+}
+
 /* Artifacts */
 .tier-1 {
   background-color: #cceaef;

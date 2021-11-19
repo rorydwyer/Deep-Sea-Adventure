@@ -9,9 +9,9 @@ export class DeepSeaAdventureBoard extends React.Component {
   render() {
     return (
       <div id="board">
-        <div className="grid grid-cols-12">
+        <div className="grid grid-cols-12 gap-4">
           <PlayersCol />
-          <SeaCol artifacts={this.props.G.artifacts} />
+          <SeaCol artifacts={this.props.G.artifacts} players={this.props.G.players} />
           <ControlsCol moves={this.props.moves} />
         </div>
       </div>

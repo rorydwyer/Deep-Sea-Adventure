@@ -5,7 +5,7 @@ const ChooseDirection = ({ swimDown, swimUp }) => {
       <button className="btn btn-primary" onClick={swimUp}>
         Go Back
       </button>
-      <button className="btn btn-primary" onClick={swimUp}>
+      <button className="btn btn-primary" onClick={swimDown}>
         Swim Deeper
       </button>
     </div>
