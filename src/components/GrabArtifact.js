@@ -5,9 +5,9 @@ const GrabArtifact = ({ grabArtifact, dropArtifact, endTurn }) => {
       <button className="btn btn-primary" onClick={grabArtifact}>
         Grab Artifact
       </button>
-      <button className="btn btn-primary" onClick={dropArtifact}>
+      {/* <button className="btn btn-primary" onClick={dropArtifact}>
         Drop Artifact
-      </button>
+      </button> */}
       <button className="btn btn-primary" onClick={endTurn}>
         End Turn
       </button>

@@ -2,29 +2,51 @@ export const DeepSeaAdventure = {
   setup: (ctx) => ({
     players: setupPlayers(ctx.numPlayers),
     artifacts: setupArtifactChips(),
+    dice: [1, 3],
     oxygen: 25,
   }),
 
   moves: {
     swimDown: (G, ctx) => {
-      if (G.players[ctx.currentPlayer].depth >= G.artifacts.length - 1) return;
-      G.players[ctx.currentPlayer].depth++;
+      G.players[ctx.currentPlayer].direction = "down";
+      //   if (G.players[ctx.currentPlayer].depth >= G.artifacts.length - 1) return;
+      //   G.players[ctx.currentPlayer].depth++;
     },
 
     swimUp: (G, ctx) => {
-      if (G.players[ctx.currentPlayer].depth <= -1) return;
-      G.players[ctx.currentPlayer].depth--;
+      G.players[ctx.currentPlayer].direction = "up";
+      //   if (G.players[ctx.currentPlayer].depth <= -1) return;
+      //   G.players[ctx.currentPlayer].depth--;
     },
 
-    rollDice: (G, ctx, id) => {
-      let dice = [];
-      for (let i = 0; i < 2; i++) {
-        dice.push(Math.floor(Math.random() * 3) + 1);
+    rollDice: (G, ctx) => {
+      G.dice = ctx.random.Die(3, 2);
+      const total = G.dice[0] + G.dice[1];
+
+      // If player is going down, then check if they reach the last artifact
+      if (G.players[ctx.currentPlayer].direction === "down") {
+        if (G.players[ctx.currentPlayer].depth + total >= G.artifacts.length) {
+          G.players[ctx.currentPlayer].depth = G.artifacts.length - 1;
+        } else {
+          G.players[ctx.currentPlayer].depth += total;
+        }
+
+        // If player is going up, then check if they reach the submarine
+      } else {
+        if (G.players[ctx.currentPlayer].depth - total <= -1) {
+          G.players[ctx.currentPlayer].depth = -1;
+        } else {
+          G.players[ctx.currentPlayer].depth -= total;
+        }
       }
-      alert(dice);
     },
 
-    grabArtifact: (G, ctx, id) => {},
+    grabArtifact: (G, ctx) => {
+      if (G.artifacts[G.players[ctx.currentPlayer].depth].type === "artifact") {
+        G.players[ctx.currentPlayer].artifactsCarrying.push(G.artifacts[G.players[ctx.currentPlayer].depth]);
+        G.artifacts[G.players[ctx.currentPlayer].depth] = { type: "blank" };
+      }
+    },
 
     dropArtifact: (G, ctx, id) => {},
 
@@ -39,6 +61,8 @@ function setupPlayers(numPlayers) {
       id: i + 1,
       name: `Player ${i + 1}`,
       depth: -1,
+      direction: "down",
+      atSubmarine: false,
       artifactsCarrying: [],
       artifactsSaved: [],
     });

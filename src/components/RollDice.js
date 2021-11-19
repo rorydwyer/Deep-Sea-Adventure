@@ -1,7 +1,15 @@
-const RollDice = ({ rollDice }) => {
+import { useState } from "react";
+
+const RollDice = ({ rollDice, dice }) => {
+  //   const [dice, setDice] = useState([]);
+
   return (
     <div className="border rounded-lg p-2 my-2">
       <h3>Roll Dice</h3>
+      <div id="dice" className="flex justify-evenly">
+        <span className="m-2">{dice[0]}</span>
+        <span className="m-2">{dice[1]}</span>
+      </div>
       <button className="btn btn-primary" onClick={rollDice}>
         Roll
       </button>
