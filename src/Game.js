@@ -2,6 +2,30 @@ export const DeepSeaAdventure = {
   setup: () => ({
     artifacts: getArtifactChips(),
   }),
+
+  moves: {
+    swimDown: (G, ctx, id) => {
+      alert("swim down");
+    },
+
+    swimUp: (G, ctx, id) => {
+      alert("swim up");
+    },
+
+    rollDice: (G, ctx, id) => {
+      let dice = [];
+      for (let i = 0; i < 2; i++) {
+        dice.push(Math.floor(Math.random() * 3) + 1);
+      }
+      alert(dice);
+    },
+
+    grabArtifact: (G, ctx, id) => {},
+
+    dropArtifact: (G, ctx, id) => {},
+
+    endTurn: (G, ctx, id) => {},
+  },
 };
 
 function getArtifactChips() {
@@ -11,7 +35,7 @@ function getArtifactChips() {
   let tier4 = suffleArray([12, 12, 13, 13, 14, 14, 15, 15]);
 
   return [...tier1, ...tier2, ...tier3, ...tier4].map((value, i) => {
-    return { id: i, value: value, tier: Math.floor(i / 8) + 1, type: "artifact" };
+    return { id: i + 1, value: value, tier: Math.floor(i / 8) + 1, type: "artifact" };
   });
 }
 

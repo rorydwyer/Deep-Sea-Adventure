@@ -1,38 +1,46 @@
-.App {
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Artifacts */
+.tier-1 {
+  background-color: #cceaef;
+}
+
+.tier-2 {
+  background-color: #a4efeb;
+}
+
+.tier-3 {
+  background-color: #6be8e7;
+}
+
+.tier-4 {
+  background-color: #3585be;
+}
+
+/* Blank Chip */
+.blank-chip {
+  background-color: #cceaef;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.2rem;
+  width: 100%;
+  height: 48px;
   text-align: center;
+  margin: 4px 8px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.btn-primary {
+  background-color: #0067a1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Control Column */
+#controls-col h3 {
+  text-align: center;
 }

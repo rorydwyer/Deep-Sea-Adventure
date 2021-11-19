@@ -4,7 +4,7 @@ import BlankChip from "./BlankChip";
 const SeaCol = ({ artifacts }) => {
   return (
     <div className="col-span-8">
-      <BlankChip />
+      {/* <BlankChip /> */}
       {artifacts.map((artifact, i) => (
         <Artifact key={i} artifact={artifact} />
       ))}

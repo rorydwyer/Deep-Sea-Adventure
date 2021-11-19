@@ -12,7 +12,7 @@ export class DeepSeaAdventureBoard extends React.Component {
         <div className="grid grid-cols-12">
           <PlayersCol />
           <SeaCol artifacts={this.props.G.artifacts} />
-          <ControlsCol />
+          <ControlsCol moves={this.props.moves} />
         </div>
       </div>
     );
