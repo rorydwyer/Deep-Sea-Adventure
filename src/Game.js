@@ -42,6 +42,8 @@ export const DeepSeaAdventure = {
     },
 
     grabArtifact: (G, ctx) => {
+      // If player if on an artifact, then add it to their artifactsCarrying array
+      // and remove it from the artifacts array
       if (G.artifacts[G.players[ctx.currentPlayer].depth].type === "artifact") {
         G.players[ctx.currentPlayer].artifactsCarrying.push(G.artifacts[G.players[ctx.currentPlayer].depth]);
         G.artifacts[G.players[ctx.currentPlayer].depth] = { type: "blank" };
@@ -50,7 +52,9 @@ export const DeepSeaAdventure = {
 
     dropArtifact: (G, ctx, id) => {},
 
-    endTurn: (G, ctx, id) => {},
+    endTurn: (G, ctx) => {
+      //   ctx.endTurn();
+    },
   },
 };
 

@@ -6,7 +6,9 @@ const Artifact = ({ artifact, depth }) => {
           {artifact.value}
         </div>
       ) : (
-        <div className="blank-chip w-16 h-16 m-2 text-white text-center shadow-lg rounded-full">X</div>
+        <div id={`artifact-${depth}`} className="blank-chip w-16 h-16 m-2 text-white text-center shadow-lg rounded-full">
+          X
+        </div>
       )}
     </>
   );
