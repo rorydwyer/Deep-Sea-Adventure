@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const RollDice = ({ rollDice, dice }) => {
+const RollDice = ({ player, rollDice, dice }) => {
   //   const [dice, setDice] = useState([]);
 
   return (
@@ -9,6 +9,12 @@ const RollDice = ({ rollDice, dice }) => {
       <div id="dice" className="flex justify-evenly">
         <span className="m-2">{dice[0]}</span>
         <span className="m-2">{dice[1]}</span>
+      </div>
+      <div>
+        <span>Moves subtracted from treasure: {player.artifactsCarrying.length ? "-" + player.artifactsCarrying.length : "0"}</span>
+      </div>
+      <div>
+        <span>Total moves: {Math.max(dice[0] + dice[1] - player.artifactsCarrying.length, 0)}</span>
       </div>
       <button className="btn btn-primary" onClick={rollDice}>
         Roll

@@ -21,23 +21,48 @@ export const DeepSeaAdventure = {
 
     rollDice: (G, ctx) => {
       G.dice = ctx.random.Die(3, 2);
-      const total = G.dice[0] + G.dice[1];
+      const total = Math.max(G.dice[0] + G.dice[1] - G.players[ctx.currentPlayer].artifactsCarrying.length, 0);
+      let depth = G.players[ctx.currentPlayer].depth;
 
       // If player is going down, then check if they reach the last artifact
       if (G.players[ctx.currentPlayer].direction === "down") {
-        if (G.players[ctx.currentPlayer].depth + total >= G.artifacts.length) {
-          G.players[ctx.currentPlayer].depth = G.artifacts.length - 1;
-        } else {
-          G.players[ctx.currentPlayer].depth += total;
+        for (let i = total; i > 0; i--) {
+          depth++;
+
+          if (!artifactIsOccupied(depth) && depth < G.artifacts.length) {
+            G.players[ctx.currentPlayer].depth = depth;
+          } else {
+            // Artifact is occupied
+            i++;
+          }
+
+          if (depth >= G.artifacts.length) break;
         }
 
         // If player is going up, then check if they reach the submarine
       } else {
-        if (G.players[ctx.currentPlayer].depth - total <= -1) {
-          G.players[ctx.currentPlayer].depth = -1;
-        } else {
-          G.players[ctx.currentPlayer].depth -= total;
+        for (let i = total; i > 0; i--) {
+          depth--;
+
+          if (!artifactIsOccupied(depth) && depth >= -1) {
+            G.players[ctx.currentPlayer].depth = depth;
+          } else {
+            // Artifact is occupied
+            i++;
+          }
+
+          if (depth <= -1) break;
         }
+      }
+
+      function artifactIsOccupied(depth) {
+        if (depth === -1) return false; // Made it to the submarine
+        for (let i = 0; i < G.players.length; i++) {
+          if (G.players[i].depth === depth) {
+            return true;
+          }
+        }
+        return false;
       }
     },
 
@@ -62,7 +87,7 @@ function setupPlayers(numPlayers) {
   let players = [];
   for (let i = 0; i < numPlayers; i++) {
     players.push({
-      id: i + 1,
+      id: i,
       name: `Player ${i + 1}`,
       depth: -1,
       direction: "down",

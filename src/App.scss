@@ -3,18 +3,58 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Players */
-.player-1 {
+/* Players chip */
+.player-0 {
   background-color: #eb9fa1;
 }
 
-.player-2 {
+.player-1 {
   background-color: #57d861;
   margin-left: 12px;
 }
 
-.player-3 {
+.player-2 {
   background-color: #d06be8;
+}
+
+// Player Tab
+.player-tab {
+  position: relative;
+  border-radius: 0 8px 8px 0;
+}
+
+.player-tab.active {
+  left: -4px;
+}
+
+.tab-0 {
+  .dot {
+    background-color: #eb9fa1;
+  }
+}
+
+.tab-0.active {
+  border: 4px solid #eb9fa1;
+}
+
+.tab-1 {
+  .dot {
+    background-color: #57d861;
+  }
+}
+
+.tab-1.active {
+  border: 4px solid #57d861;
+}
+
+.tab-2 {
+  .dot {
+    background-color: #d06be8;
+  }
+}
+
+.tab-2.active {
+  border: 4px solid #d06be8;
 }
 
 /* Artifacts */

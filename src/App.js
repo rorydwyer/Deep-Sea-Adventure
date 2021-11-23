@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 
 import { Client } from "boardgame.io/react";
 import { DeepSeaAdventure } from "./Game";

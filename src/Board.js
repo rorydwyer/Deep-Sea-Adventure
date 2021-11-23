@@ -10,9 +10,14 @@ export class DeepSeaAdventureBoard extends React.Component {
     return (
       <div id="board">
         <div className="grid grid-cols-12 gap-4">
-          <PlayersCol />
+          <PlayersCol players={this.props.G.players} ctx={this.props.ctx} />
           <SeaCol artifacts={this.props.G.artifacts} players={this.props.G.players} />
-          <ControlsCol moves={this.props.moves} events={this.props.events} dice={this.props.G.dice} />
+          <ControlsCol
+            player={this.props.G.players[this.props.ctx.currentPlayer]}
+            moves={this.props.moves}
+            events={this.props.events}
+            dice={this.props.G.dice}
+          />
         </div>
       </div>
     );
