@@ -14,7 +14,7 @@ const Diver = ({ player }) => {
     }
   }, [player]);
 
-  return <div className={`w-6 h-6 rounded-full border-2 border-white shadow absolute player-${player.id}`} style={position}></div>;
+  return <div className={`w-6 h-6 rounded-full border-2 border-white shadow absolute transition-all player-${player.id}`} style={position}></div>;
 };
 
 export default Diver;
