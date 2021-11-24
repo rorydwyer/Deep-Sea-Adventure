@@ -11,7 +11,7 @@ export class DeepSeaAdventureBoard extends React.Component {
       <div id="board">
         <div className="grid grid-cols-12 gap-4">
           <PlayersCol players={this.props.G.players} ctx={this.props.ctx} />
-          <SeaCol artifacts={this.props.G.artifacts} players={this.props.G.players} />
+          <SeaCol artifacts={this.props.G.artifacts} oxygen={this.props.G.oxygen} players={this.props.G.players} />
           <ControlsCol
             player={this.props.G.players[this.props.ctx.currentPlayer]}
             moves={this.props.moves}

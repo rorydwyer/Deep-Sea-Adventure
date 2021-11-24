@@ -7,7 +7,7 @@ const ControlsCol = ({ player, moves, events, dice }) => {
     <div id="controls-col" className="col-span-2">
       <ChooseDirection swimDown={moves.swimDown} swimUp={moves.swimUp} />
       <RollDice player={player} rollDice={moves.rollDice} dice={dice} />
-      <GrabArtifact grabArtifact={moves.grabArtifact} dropArtifact={moves.dropArtifact} endTurn={events.endTurn} />
+      <GrabArtifact grabArtifact={moves.grabArtifact} dropArtifact={moves.dropArtifact} endTurn={events.endTurn} endPhase={events.endPhase} />
     </div>
   );
 };
