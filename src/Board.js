@@ -14,6 +14,11 @@ export class DeepSeaAdventureBoard extends React.Component {
           <SeaCol artifacts={this.props.G.artifacts} oxygen={this.props.G.oxygen} players={this.props.G.players} />
           <ControlsCol
             player={this.props.G.players[this.props.ctx.currentPlayer]}
+            artifact={
+              this.props.G.artifacts[
+                this.props.G.players[this.props.ctx.currentPlayer].depth !== -1 ? this.props.G.players[this.props.ctx.currentPlayer].depth : 0
+              ]
+            }
             moves={this.props.moves}
             events={this.props.events}
             dice={this.props.G.dice}
